@@ -1,4 +1,4 @@
-; 第一章：草化花
+﻿; 第一章：草化花
 changeBg:bg_cabin_interior_fire.png -next;
 changeFigure:fig_oldman_normal.png -left -next;
 setAnimation:enter -target=fig-left -next;
