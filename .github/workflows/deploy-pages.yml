@@ -18,10 +18,21 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/upload-pages-artifact@v3
+      - name: Checkout (with LFS)
+        uses: actions/checkout@v4
         with:
-          path: web
+          lfs: true
+          fetch-depth: 0
 
-      - uses: actions/deploy-pages@v4
+      - name: Force pull LFS files
+        run: |
+          git lfs install
+          git lfs pull
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy
+        uses: actions/deploy-pages@v4
