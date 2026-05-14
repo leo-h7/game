@@ -67,3 +67,41 @@
     start();
   }
 })();
+(() => {
+  const originalPlay = HTMLMediaElement.prototype.play;
+  const originalPause = HTMLMediaElement.prototype.pause;
+  const lastPlayAt = new WeakMap();
+
+  HTMLMediaElement.prototype.play = function (...args) {
+    try {
+      lastPlayAt.set(this, Date.now());
+    } catch {}
+    return originalPlay.apply(this, args);
+  };
+
+  HTMLMediaElement.prototype.pause = function (...args) {
+    const src = (this.currentSrc || this.src || "").toString();
+    if (src.includes("/game/vocal/")) {
+      const t = lastPlayAt.get(this) || 0;
+      const dt = Date.now() - t;
+      if (dt >= 0 && dt < 800 && (this.currentTime || 0) === 0) {
+        return;
+      }
+    }
+    return originalPause.apply(this, args);
+  };
+
+  document.addEventListener(
+    "click",
+    () => {
+      document.querySelectorAll("audio").forEach((a) => {
+        const src = (a.currentSrc || a.src || "").toString();
+        if (src.includes("/game/vocal/")) {
+          a.muted = false;
+          if (!a.volume || a.volume <= 0) a.volume = 1;
+        }
+      });
+    },
+    { capture: true, once: true }
+  );
+})();
