@@ -1,0 +1,16 @@
+; 全局变量初始化（用于分支判定）
+setVar:ch1=0 -global -next;
+setVar:ch2=0 -global -next;
+setVar:ch3=0 -global -next;
+setVar:ch4=0 -global -next;
+
+; 角色名（用于对话变量插值）
+setVar:spk_guide=你 -next;
+setVar:spk_old=老人 -global -next;
+setVar:spk_kate=凯特 -global -next;
+setVar:spk_elly=艾莉 -global -next;
+setVar:spk_law=劳伦斯 -global -next;
+
+setVar:player_custom_name=你 -next;
+
+choose:开始游戏:prologue.txt|结局栏:ending_bar.txt;

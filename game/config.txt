@@ -1,0 +1,7 @@
+Game_name:新的游戏;
+Game_key:d7ddd363d129938;
+Title_img:bg_cabin_interior_fire.png;
+Title_bgm:s_Title.mp3;
+Textbox_theme:imss;
+Enable_Appreciation:true;
+Game_Logo:;

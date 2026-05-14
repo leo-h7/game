@@ -1,0 +1,6 @@
+; WebGAL 入口脚本（根据 try4/scene 与 try4/文稿.md 整理）
+changeBg:none -next;
+changeFigure:none -next;
+; 音频资源尚未导入，先确保静音启动
+bgm:none -enter=500 -next;
+changeScene:scene.txt;

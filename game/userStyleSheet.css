@@ -1,0 +1,281 @@
+.Title_main{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  z-index: 13;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+.Title_main::before{
+  content: "";
+  position: absolute;
+  inset: -60px;
+  background:
+    radial-gradient(1100px 720px at 18% 20%, rgba(255, 224, 168, 0.18) 0%, rgba(255, 224, 168, 0) 62%),
+    radial-gradient(980px 760px at 78% 26%, rgba(110, 190, 255, 0.14) 0%, rgba(110, 190, 255, 0) 60%),
+    radial-gradient(900px 820px at 50% 88%, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 62%),
+    linear-gradient(120deg, rgba(0, 0, 0, 0.34) 0%, rgba(0, 0, 0, 0.52) 55%, rgba(0, 0, 0, 0.72) 100%);
+  pointer-events: none;
+  animation: wgTitleBgFloat 12s ease-in-out infinite;
+  transform: translate3d(0, 0, 0);
+}
+
+.Title_main::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(1200px 820px at 50% 30%, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.62) 68%, rgba(0, 0, 0, 0.82) 100%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 35%, rgba(255, 255, 255, 0.06) 70%, rgba(255, 255, 255, 0) 100%);
+  opacity: 0.9;
+  pointer-events: none;
+  animation: wgTitleLightSweep 10.5s ease-in-out infinite;
+}
+
+.Title_buttonList{
+  font-family: "资源圆体", serif;
+  display: flex;
+  position: absolute;
+  left: 0;
+  top: 0;
+  min-width: min(520px, 45vw);
+  height: 100%;
+  justify-content: center;
+  align-items: flex-start;
+  flex-flow: column;
+  padding: 110px 64px 72px 84px;
+  box-sizing: border-box;
+  background:
+    linear-gradient(180deg, rgba(10, 12, 16, 0.68) 0%, rgba(10, 12, 16, 0.48) 45%, rgba(10, 12, 16, 0.62) 100%);
+  -webkit-backdrop-filter: blur(14px) saturate(1.25);
+  backdrop-filter: blur(14px) saturate(1.25);
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    18px 0 40px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+  animation: wgTitlePanelEnter 780ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
+  gap: 8px;
+}
+
+.Title_buttonList::before{
+  content: "";
+  width: min(440px, 38vw);
+  height: 120px;
+  display: block;
+  background: url("./tex/ui_logo.png") center / contain no-repeat;
+  margin: 0 0 20px 0;
+  opacity: 0.98;
+  filter:
+    drop-shadow(0 18px 26px rgba(0, 0, 0, 0.28))
+    drop-shadow(0 6px 10px rgba(0, 0, 0, 0.22));
+  transform: translate3d(0, 0, 0);
+  animation: wgTitleLogoEnter 920ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
+  animation-delay: 120ms;
+}
+
+.Title_button{
+  font-weight: bold;
+  text-align: left;
+  flex: 0 1 auto;
+  cursor: pointer;
+  width: 100%;
+  padding: 12px 14px;
+  margin: 8px 0;
+  transition: transform 0.18s ease, opacity 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+  background: rgba(255, 255, 255, 0.06);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  transform: translate3d(0, 0, 0);
+  overflow: hidden;
+  text-shadow: none;
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.18),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+  position: relative;
+}
+
+.Title_button::before{
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background:
+    radial-gradient(1200px 260px at 18% 40%, rgba(255, 230, 180, 0.18) 0%, rgba(255, 230, 180, 0) 62%),
+    radial-gradient(900px 220px at 82% 60%, rgba(120, 190, 255, 0.14) 0%, rgba(120, 190, 255, 0) 60%);
+  opacity: 0.7;
+  pointer-events: none;
+  transform: translate3d(-16px, 0, 0);
+  transition: transform 0.22s ease, opacity 0.22s ease;
+}
+
+.Title_button:hover{
+  transform: translate3d(0, -2px, 0);
+  background: rgba(255, 255, 255, 0.09);
+  box-shadow:
+    0 16px 34px rgba(0, 0, 0, 0.22),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+}
+
+.Title_button:hover::before{
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+
+.Title_button:active{
+  transform: translate3d(0, 0, 0);
+}
+
+.Title_button_disabled{
+  cursor: not-allowed !important;
+  opacity: 0.45;
+}
+
+.Title_button_text{
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  padding: 0.06em 0.55em 0.12em 0.35em;
+  font-size: clamp(22px, 2.15vw, 34px);
+  font-family: "资源圆体", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  letter-spacing: 0.16em;
+  line-height: 1.2;
+  transform-origin: left center;
+  transition: transform 0.18s ease;
+  color: transparent;
+  white-space: nowrap;
+}
+
+.Title_button_text_outer{
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  background-image: none;
+  background-clip: border-box;
+  -webkit-background-clip: border-box;
+  color: rgba(255, 255, 255, 0.96);
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.96);
+  z-index: 2;
+  text-shadow:
+    0 10px 26px rgba(0, 0, 0, 0.35),
+    0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.Title_button_text_inner{
+  display: block;
+  white-space: nowrap;
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: inherit;
+  -webkit-text-stroke: 0.1em rgba(0, 0, 0, 0.55);
+  z-index: 1;
+}
+
+#wg-back-menu{
+  position: fixed;
+  right: 22px;
+  bottom: 20px;
+  z-index: 10050;
+  opacity: 0;
+  transform: translate3d(0, 10px, 0);
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+#wg-back-menu.wg-show{
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  pointer-events: auto;
+}
+
+#wg-back-menu-btn{
+  font-family: "资源圆体", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  padding: 12px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.92);
+  background: rgba(10, 12, 16, 0.62);
+  -webkit-backdrop-filter: blur(12px) saturate(1.2);
+  backdrop-filter: blur(12px) saturate(1.2);
+  cursor: pointer;
+  box-shadow:
+    0 14px 34px rgba(0, 0, 0, 0.26),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+  transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+
+#wg-back-menu-btn:hover{
+  background: rgba(12, 14, 18, 0.72);
+  box-shadow:
+    0 18px 44px rgba(0, 0, 0, 0.32),
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+  transform: translate3d(0, -1px, 0);
+}
+
+#wg-back-menu-btn:active{
+  transform: translate3d(0, 0, 0);
+}
+
+@keyframes wgTitlePanelEnter{
+  0%{
+    opacity: 0;
+    transform: translate3d(-18px, 0, 0);
+  }
+  100%{
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes wgTitleLogoEnter{
+  0%{
+    opacity: 0;
+    transform: translate3d(-10px, -6px, 0) scale(0.985);
+    filter:
+      drop-shadow(0 18px 26px rgba(0, 0, 0, 0.05))
+      drop-shadow(0 6px 10px rgba(0, 0, 0, 0.04));
+  }
+  100%{
+    opacity: 0.98;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter:
+      drop-shadow(0 18px 26px rgba(0, 0, 0, 0.28))
+      drop-shadow(0 6px 10px rgba(0, 0, 0, 0.22));
+  }
+}
+
+@keyframes wgTitleBgFloat{
+  0%{
+    transform: translate3d(-10px, -8px, 0) scale(1.02);
+  }
+  50%{
+    transform: translate3d(10px, 8px, 0) scale(1.03);
+  }
+  100%{
+    transform: translate3d(-10px, -8px, 0) scale(1.02);
+  }
+}
+
+@keyframes wgTitleLightSweep{
+  0%{
+    transform: translate3d(-2%, 0, 0);
+    opacity: 0.74;
+  }
+  50%{
+    transform: translate3d(2%, 0, 0);
+    opacity: 0.92;
+  }
+  100%{
+    transform: translate3d(-2%, 0, 0);
+    opacity: 0.74;
+  }
+}

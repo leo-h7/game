@@ -1,0 +1,96 @@
+changeBg:bg_forest_snow_night.png -next;
+:雪下得很紧，像要把所有脚印都擦掉。;
+:林子里没有路，只有雾。雾里也没有方向，只有反复的白。;
+:你不知道自己走了多久，只知道每一次停下，寒意都会趁机钻进骨头里。;
+setAnimation:enter -target=bg-main -next;
+:直到你看见一盏火。;
+:火光很小，落在雪夜里，像一枚被人遗忘的星。;
+:你本该怀疑，可脚已经先一步朝那边去了。;
+
+changeBg:bg_cabin_interior_fire.png -next;
+:门轴发出一声轻响，暖意扑面而来。;
+:壁炉里的火在木头上啃出细碎的噼啪声，把屋子照得半明半暗。;
+:一张木桌，两把椅子，一面旧地图。;
+:墙上贴着一张纸，字迹很淡，却像早就等着你来读。;
+
+miniAvatar:mini_oldman.png;
+{spk_old}:进来就坐。 -V_prologue_017_老人_beefd43037.mp3;
+{spk_old}:别站着，把雪带进火里。 -V_prologue_018_老人_b82341c507.mp3;
+miniAvatar:none -next;
+
+:你刚想开口，喉咙里却先泛起一阵干涩。;
+:像有一只无形的手按住了你，把所有“我是谁”“我在哪”都按回胸口深处。;
+
+miniAvatar:mini_oldman.png;
+miniAvatar:none -next=true;
+
+:你坐下时才发现，椅子并不冰冷，像被无数次来访的人体温焐过。;
+:火光跳在桌面上，映出你指尖微微发抖的影子。;
+:你看向老人，又看向那张地图。;
+:地图上画着林子的边界，画着岔路，画着出口——仿佛只要指尖一点，你就能离开这片雪。;
+
+miniAvatar:mini_oldman.png;
+{spk_old}:想走，就得先把该说的说完。 -V_prologue_035_老人_218b3c6d72.mp3;
+{spk_old}:这里不收谎话。 -V_prologue_036_老人_c733a785e6.mp3;
+miniAvatar:none -next;
+
+:你愣了一下。;
+:你以为自己会反驳，会质问，可你忽然意识到：你连“该说什么”都说不出来。;
+:你记得冷，记得雪，记得迷路。;
+:却偏偏想不起自己为什么会来到这里。;
+
+miniAvatar:mini_oldman.png;
+miniAvatar:none -next;
+
+:你盯着火，火里仿佛也盯着你。;
+:你隐约觉得，只要你把某个故事说出口，雪就会让开一条路。;
+:可如果你说错了——;
+:你不敢把那个念头说下去。;
+
+miniAvatar:mini_oldman.png;
+{spk_old}:别怕。 -V_prologue_055_老人_d74e4d5ec4.mp3;
+{spk_old}:说真话就行。 -V_prologue_056_老人_b36162011c.mp3;
+miniAvatar:none -next;
+
+:老人把目光移开，像是从不需要你的回答。;
+:他只是看着火，像看着一件迟早会发生的事。;
+:而你忽然明白，这间小屋并不是救援站。;
+:它更像一座秤。;
+:称的不是你带来的行囊，而是你不肯承认的那部分自己。;
+
+:你深吸一口气。;
+:外面风雪仍在，屋里火光仍在。;
+:你知道，下一次推门进来的，不会是你。;
+:会是另一个更锋利、更喧哗、更不肯坐下的人。;
+
+miniAvatar:mini_oldman.png;
+{spk_old}:是的，你记不起自己的名字了，但这不重要，在小屋里，你可以成为任何人，那么，你想成为谁？ -V_prologue_071_老人_290dc82f06.mp3;
+miniAvatar:none -next;
+
+choose:输入名字:prompt_name_input|随机生成:prompt_name_random;
+
+label:prompt_name_input;
+getUserInput:player_custom_name -title=请输入你的名字（2-8汉字或4-16英文） -buttonText=确认 -V_prologue_077_getUserInput_e60db6ace1.mp3;
+jumpLabel:prompt_name_done;
+
+label:prompt_name_random;
+setVar:_rn=random();
+setVar:player_custom_name=林雪 -when=_rn<0.2;
+setVar:player_custom_name=周岚 -when=_rn>=0.2&&_rn<0.4;
+setVar:player_custom_name=苏澈 -when=_rn>=0.4&&_rn<0.6;
+setVar:player_custom_name=EvanGray -when=_rn>=0.6&&_rn<0.8;
+setVar:player_custom_name=NoahStone -when=_rn>=0.8;
+jumpLabel:prompt_name_done;
+
+label:prompt_name_done;
+setVar:player_custom_name=你 -when=player_custom_name=="";
+setVar:spk_guide=player_custom_name -next;
+
+miniAvatar:mini_oldman.png;
+{spk_old}:{player_custom_name}……好。 -when=player_custom_name!=你 -V_prologue_094_老人_5daec6fe3d.mp3;
+{spk_old}:……好。 -when=player_custom_name==你 -V_prologue_095_老人_6d13daae1f.mp3;
+miniAvatar:none -next;
+
+changeScene:ch01.txt;
+
+setTextbox:hide;
